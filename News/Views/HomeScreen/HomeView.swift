@@ -28,7 +28,11 @@ struct HomeView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
                         ForEach(vm.topNews, id: \.url) { article in
-                            TopArticleView(article: article)
+                            
+                            NavigationLink(destination: DetailView(article: article)) {
+                                TopArticleView(article: article)
+                            }
+                            .buttonStyle(.plain)
                         }
                     }
                     .padding(.horizontal)
@@ -46,7 +50,11 @@ struct HomeView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
                         ForEach(vm.bottomNews, id: \.url) { article in
-                            BottomArticleNews(article: article)
+                            
+                            NavigationLink(destination: DetailView(article: article)) {
+                                BottomArticleNews(article: article)
+                            }
+                            .buttonStyle(.plain)
                         }
                     }
                     .padding(.horizontal)
@@ -60,9 +68,6 @@ struct HomeView: View {
             }
         }
     }
-    
-    // MARK: - Methods
-    
 }
 
 #Preview {
